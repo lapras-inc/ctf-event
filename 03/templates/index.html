@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEAL — ジョブコンソール</title><link rel="stylesheet" href="/static/style.css"><script src="/static/app.js" defer></script></head>
+<body>
+<header class="appbar"><a class="brand" href="/"><span class="seal-mark">S</span>seal<span class="product">/ console</span></a><div class="appbar-right"><span class="service-status"><i></i>Services operational</span><span class="profile">V</span></div></header>
+<div class="app-layout">
+  <aside class="navigation"><p class="nav-caption">WORKSPACE</p><div class="workspace-name"><span>▣</span><div>personal<small>Viewer workspace</small></div></div><nav><a class="active" href="#jobs"><span>⌘</span>ジョブコンソール</a><a href="#activity"><span>≡</span>実行ログ</a></nav><div class="workspace-details"><span>接続先</span><strong>Default workspace</strong><span>ロール</span><strong>viewer</strong></div><div class="nav-bottom">SEAL PLATFORM<br><span>Signed jobs. Controlled access.</span></div></aside>
+  <main>
+    <div class="breadcrumb">personal <span>/</span> jobs</div>
+    <section class="page-heading" id="jobs"><div><h1>ジョブコンソール</h1><p>ジョブを署名し、承認された操作を実行します。</p></div><span class="format-badge">JSON / UTF-8</span></section>
+    <div class="service-strip"><span><i></i>Signing service <b>Ready</b></span><span><i></i>Job runner <b>Ready</b></span><span class="available-action">Available action <code>preview</code></span></div>
+    <div class="editors">
+      <section class="editor-panel"><div class="editor-title"><div><span class="step">01</span><h2>署名を発行</h2></div><span class="endpoint">POST /api/sign</span></div><form data-api="/api/sign" data-kind="sign"><div class="editor-tab"><span class="json-dot"></span>job.json<span class="tab-format">JSON</span></div><label class="sr-only" for="body">署名するジョブ（JSON）</label><div class="code-editor"><span class="line-numbers" aria-hidden="true">1<br>2<br>3<br>4<br>5</span><textarea id="body" name="body" spellcheck="false" required>{
+  "action": "preview",
+  "role": "viewer",
+  "message": "Hello, SEAL!"
+}</textarea></div><div class="editor-foot"><span>署名は実行フォームに転記されます</span><button type="submit">署名を発行 <span>→</span></button></div></form></section>
+      <section class="editor-panel"><div class="editor-title"><div><span class="step">02</span><h2>ジョブを実行</h2></div><span class="endpoint">POST /api/execute</span></div><form data-api="/api/execute" data-kind="execute"><div class="editor-tab"><span class="json-dot"></span>signed-job.json<span class="tab-format">JSON</span></div><label class="sr-only" for="signed-body">実行するジョブ（JSON）</label><div class="code-editor"><span class="line-numbers" aria-hidden="true">1<br>2<br>3<br>4<br>5</span><textarea id="signed-body" name="body" spellcheck="false" required>{
+  "action": "preview",
+  "role": "viewer",
+  "message": "Hello, SEAL!"
+}</textarea></div><div class="signature-field"><label for="signature">署名 <span>X-Signature</span></label><input id="signature" name="signature" placeholder="署名を発行すると自動入力されます" required autocomplete="off" spellcheck="false"></div><div class="editor-foot"><span>署名した内容をそのまま実行</span><button type="submit">署名付きジョブを実行 <span>▷</span></button></div></form></section>
+    </div>
+    <section class="activity" id="activity" aria-label="実行ログ"><div class="activity-head"><h2><span>≡</span>実行ログ</h2><span id="status" role="status">IDLE</span></div><div class="log-label"><span class="log-dot"></span>Workspace connected<span>response</span></div><pre id="output" aria-live="polite">ジョブの署名・実行結果がここに表示されます。</pre></section>
+    <div class="usage-note"><span>ⓘ</span><p>ジョブの内容を変更した場合は、署名を再発行してください。利用可能な操作はワークスペースの権限によって管理されます。</p></div>
+    <footer><span>SEAL / PERSONAL WORKSPACE</span><span>Signing & execution console</span></footer>
+  </main>
+</div></body></html>

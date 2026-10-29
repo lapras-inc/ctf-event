@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Local env (keep .env.example as the committed template)
+.env
+.env.local
+
+# Editor / OS
+.DS_Store
+.claude/
+.venv/
+venv/

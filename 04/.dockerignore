@@ -1,0 +1,12 @@
+*
+!app.py
+!services.py
+!transport.py
+!vm.py
+!program.hex
+!requirements.txt
+!templates/
+!templates/**
+!static/
+!static/**
+

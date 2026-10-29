@@ -1,0 +1,72 @@
+name: lapras-02
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${PORT:-8002}:8000"
+    environment:
+      PARTNER_PORT: "${PARTNER_PORT:-8012}"
+    depends_on:
+      partner:
+        condition: service_healthy
+      vault:
+        condition: service_healthy
+    networks: [frontend, fixtures]
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    init: true
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+  partner:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${PARTNER_PORT:-8012}:8000"
+    command: ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "1", "--timeout", "15", "services:app"]
+    environment:
+      SERVICE_ROLE: partner
+    networks: [frontend, fixtures]
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    init: true
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+  vault:
+    build: .
+    restart: unless-stopped
+    command: ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "1", "--timeout", "15", "services:app"]
+    environment:
+      SERVICE_ROLE: vault
+      FLAG: "${FLAG:-LAPRAS{ch3ck_3v3ry_h0p}}"
+    networks: [fixtures]
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    init: true
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+networks:
+  frontend: {}
+  fixtures:
+    internal: true

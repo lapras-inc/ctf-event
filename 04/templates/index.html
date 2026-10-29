@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HELIOS — プライベート資料庫</title><link rel="stylesheet" href="/static/style.css"><script src="/static/app.js" defer></script></head>
+<body>
+<div class="page"><header><a class="brand" href="/"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M18 0v8m0 20v8M0 18h8m20 0h8M5 5l6 6m14 14 6 6M5 31l6-6m14-14 6-6" stroke="currentColor" stroke-width="1.5"/></svg><span>HELIOS<small>PRIVATE COLLECTIONS</small></span></a><div class="header-info"><span>保護されたワークスペース</span><span class="lock-icon">⌑</span></div></header>
+<main>
+  <div class="heading"><div class="collection-label"><span class="label-line"></span>YOUR PRIVATE LIBRARY</div><h1>プライベート資料庫</h1><p>レポートや共有資料を、ひとつの場所に。<br>コレクションはアクセスキーで保護されています。</p></div>
+  <div class="layout">
+    <section class="collection"><div class="section-header"><h2>Research collection</h2><span>3 DOCUMENTS</span></div>
+      <div class="documents">
+        <article class="document document-red"><div class="doc-preview"><span class="doc-series">HELIOS / INSIGHTS</span><div class="cover-title">Research<br>Review.</div><span class="cover-year">2026 / Q3</span><div class="cover-orbit" aria-hidden="true"></div></div><div class="doc-info"><h3>四半期リサーチレポート</h3><p>調査・分析 / PDF</p><span class="doc-lock">⌑ 保護された資料</span></div></article>
+        <article class="document document-green"><div class="doc-preview"><span class="doc-series">HELIOS / HANDBOOK</span><div class="cover-title">Team<br>Handbook.</div><div class="cover-lines" aria-hidden="true"><i></i><i></i><i></i></div><span class="cover-year">REVISION 03</span></div><div class="doc-info"><h3>チームハンドブック</h3><p>運用・ガイドライン / PDF</p><span class="doc-lock">⌑ 保護された資料</span></div></article>
+        <article class="document document-tan"><div class="doc-preview"><span class="doc-series">HELIOS / IDENTITY</span><div class="cover-title">Brand<br>Guidelines.</div><div class="cover-symbol" aria-hidden="true">H</div><span class="cover-year">2026 EDITION</span></div><div class="doc-info"><h3>ブランドガイドライン</h3><p>ブランド・デザイン / PDF</p><span class="doc-lock">⌑ 保護された資料</span></div></article>
+      </div>
+      <div class="collection-note"><span>⌑</span><p>資料の閲覧にはアクセスキーが必要です。<br>キーの発行については、コレクションの管理者へお問い合わせください。</p></div>
+    </section>
+    <aside class="access-card"><div class="key-emblem" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="14" cy="15" r="7" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m19 20 12 12m-5-5 3-3m-7-1 3-3" stroke="currentColor" stroke-width="1.7"/></svg></div><span class="access-eyebrow">COLLECTION ACCESS</span><h2>資料庫にアクセス</h2><p class="access-description">発行済みのキーを入力して、<br>コレクションを開いてください。</p>
+      <form id="unlock-form" data-api="/api/unlock"><label for="key">アクセスキー</label><input id="key" name="key" type="text" placeholder="32桁の小文字16進数" minlength="32" maxlength="32" pattern="[0-9a-f]{32}" required autocomplete="off" spellcheck="false"><button type="submit">資料庫を開く <span>→</span></button></form>
+      <div class="access-state"><span class="state-dot"></span><span id="lock-status">このコレクションはロックされています</span></div>
+      <div class="access-result"><span id="status" role="status">アクセス状況</span><pre id="output" aria-live="polite">キーを入力してください。</pre></div>
+    </aside>
+  </div>
+  <div class="library-footer"><span class="library-stamp">H</span><p>大切な資料を、必要な人へ。<br><span>HELIOS PRIVATE COLLECTIONS</span></p><span class="library-line"></span></div>
+</main><footer><span>© 2026 HELIOS</span><span>Private by design.</span></footer>
+</div></body></html>

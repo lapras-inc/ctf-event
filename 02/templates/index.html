@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Waypoint — リンクプレビュー</title><link rel="stylesheet" href="/static/style.css"><script src="/static/app.js" defer></script></head>
+<body><div class="page">
+<header><a class="wordmark" href="/"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 8h7l4 11 4-11h7l-8 18h-6Z" fill="currentColor"/></svg>waypoint<span>®</span></a><nav><a class="current" href="#workspace">リンクプレビュー</a><a href="{{ partner_url }}" target="_blank" rel="noopener noreferrer">FIELDNOTEを開く <span>↗</span></a></nav></header>
+<main>
+  <section class="intro"><div><span class="eyebrow">A LITTLE LESS BROWSING.</span><h1>リンクを、<br>ひと目で。</h1><p>ページを開く前に、内容をすばやく確認。<br>読みたい情報を見つける、ちいさなワークスペース。</p></div><div class="intro-art" aria-hidden="true"><span class="art-orbit"></span><div class="floating-card card-a"><span class="card-mini">READ SOMETHING GOOD</span><span class="card-line"></span><span class="card-line short"></span><div class="tiny-landscape"><i></i><b></b></div></div><div class="floating-card card-b"><span>↗</span><i></i><i></i></div><span class="art-star">✳</span></div></section>
+  <section class="workspace" id="workspace">
+    <div class="tools"><span class="step-label">YOUR NEXT READ</span><h2>ページをプレビュー</h2><p class="description">接続中のサイトから、リンク先の内容を取り込みます。</p>
+      <form id="preview-form" data-api="/api/preview"><label for="url">ページのURL</label><div class="url-field"><span aria-hidden="true">↗</span><input id="url" name="url" value="{{ partner_url }}/article" type="url" required autocomplete="off" spellcheck="false"></div><button type="submit">プレビューを取得 <span>→</span></button></form>
+      <div class="connection"><span class="small-label">CONNECTED SITE</span><a href="{{ partner_url }}" target="_blank" rel="noopener noreferrer"><span class="site-icon">f.</span><span><strong>FIELDNOTE</strong><small>暮らしと仕事の、読みもの。</small></span><span class="external">↗</span></a><p>接続先のサイトをブラウザで閲覧できます。</p></div>
+    </div>
+    <div class="preview"><div class="preview-toolbar"><span class="traffic"><i></i><i></i><i></i></span><span id="status" role="status">PREVIEW</span><span class="preview-tool">▱</span></div>
+      <div class="preview-blank" id="blank"><div class="paper-art" aria-hidden="true"><div class="paper-banner"></div><div class="paper-line"></div><div class="paper-line second"></div><div class="paper-line third"></div><div class="paper-columns"><i></i><i></i></div></div><h3>次の読みものを、ここに。</h3><p>URLを入力すると、ページの内容が表示されます。</p></div>
+      <article id="preview-result" hidden><span class="result-label" id="result-host"></span><h2 id="result-title">ページプレビュー</h2><div class="result-rule"></div><pre id="output" aria-live="polite"></pre></article>
+    </div>
+  </section>
+  <div class="footnote"><span class="footnote-mark">✳</span><p>必要な情報に、まっすぐ。<br><span>リンクの向こうを、少しだけ見やすく。</span></p></div>
+</main><footer><span>waypoint © 2026</span><span>MADE FOR CURIOUS MINDS.</span></footer>
+</div></body></html>
